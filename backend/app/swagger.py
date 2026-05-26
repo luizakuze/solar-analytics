@@ -1,0 +1,28 @@
+from flasgger import Swagger
+
+
+def init_swagger(app):
+    swagger_config = {
+        "headers": [],
+        "specs": [
+            {
+                "endpoint": "apispec",
+                "route": "/apispec.json",
+                "rule_filter": lambda rule: True,
+                "model_filter": lambda tag: True,
+            }
+        ],
+        "static_url_path": "/flasgger_static",
+        "swagger_ui": True,
+        "specs_route": "/docs/",
+    }
+
+    swagger_template = {
+        "info": {
+            "title": "Solar Analytics API",
+            "description": "API para monitoramento de métricas solares",
+            "version": "1.0.0",
+        }
+    }
+
+    Swagger(app, config=swagger_config, template=swagger_template)
