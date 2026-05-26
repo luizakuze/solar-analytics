@@ -20,26 +20,6 @@ Sistema simples para cadastro, armazenamento e visualização de métricas de ge
 - Banco de dados populado com dados iniciais via arquivo SQL
 - Exibição de potência gerada, temperatura do painel, irradiação solar, eficiência estimada e data/hora da medição
 
-## Estrutura do projeto
-
-```bash
-solar-analytics/
-├── assets/
-│   ├── app.png
-│   └── solar_analytics.sql
-├── backend/
-│   ├── app.py
-│   ├── requirements.txt
-│   └── .env
-├── frontend/
-│   ├── src/
-│   ├── package.json
-│   └── .env
-├── .gitignore
-├── LICENSE
-└── readme.md
-```
-
 ## Execução do ambiente
 
 ### Banco de dados
