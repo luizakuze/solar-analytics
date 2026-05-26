@@ -2,6 +2,11 @@
 
 Sistema simples para cadastro, armazenamento e visualização de métricas de geração de energia solar.
 
+![Dashboard do Solar Analytics](assets/app.png)
+
+
+
+
 ## Tecnologias utilizadas
 
 - Python/Flask
