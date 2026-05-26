@@ -4,9 +4,6 @@ Sistema simples para cadastro, armazenamento e visualização de métricas de ge
 
 ![Dashboard do Solar Analytics](assets/app.png)
 
-
-
-
 ## Tecnologias utilizadas
 
 - Python/Flask
@@ -43,17 +40,19 @@ solar-analytics/
 └── readme.md
 ```
 
-## Banco de dados
+## Execução do ambiente
 
-O projeto usa MariaDB e possui o script `assets/solar_analytics.sql`, responsável por criar a tabela `metrics` e inserir dados iniciais.
+### Banco de dados
 
-A variável de conexão usada no `.env` do backend é:
+O projeto usa MariaDB e possui o script:
 
-```env
-DATABASE_URL=mysql+pymysql://solar_user:solar_password@localhost/solar_analytics
+```bash
+assets/solar_analytics.sql
 ```
 
-Para criar o banco e o usuário, acesse o MariaDB:
+Esse arquivo cria a tabela `metrics` e insere dados iniciais.
+
+Acesse o MariaDB:
 
 ```bash
 sudo mysql -u root -p
@@ -73,7 +72,7 @@ FLUSH PRIVILEGES;
 EXIT;
 ```
 
-Depois, na raiz do projeto, importe o arquivo SQL:
+Depois, na raiz do projeto:
 
 ```bash
 mysql -u solar_user -p solar_analytics < assets/solar_analytics.sql
@@ -85,7 +84,7 @@ Senha:
 solar_password
 ```
 
-Para conferir se os dados foram inseridos:
+Para verificar os dados:
 
 ```bash
 mysql -u solar_user -p solar_analytics
@@ -95,7 +94,7 @@ mysql -u solar_user -p solar_analytics
 SELECT * FROM metrics;
 ```
 
-## Backend
+### Backend
 
 Entre na pasta do backend:
 
@@ -116,7 +115,7 @@ Instale as dependências:
 pip install -r requirements.txt
 ```
 
-Crie o arquivo `.env` dentro da pasta `backend`:
+Crie o arquivo `.env`:
 
 ```env
 DATABASE_URL=mysql+pymysql://solar_user:solar_password@localhost/solar_analytics
@@ -128,13 +127,13 @@ Execute o backend:
 python app.py
 ```
 
-A API ficará disponível em:
+API disponível em:
 
 ```bash
 http://localhost:5000
 ```
 
-## Frontend
+### Frontend
 
 Entre na pasta do frontend:
 
@@ -148,7 +147,7 @@ Instale as dependências:
 npm install
 ```
 
-Crie o arquivo `.env` dentro da pasta `frontend`:
+Crie o arquivo `.env`:
 
 ```env
 VITE_API_URL=http://localhost:5000
@@ -160,39 +159,8 @@ Execute o frontend:
 npm run dev
 ```
 
-A aplicação ficará disponível em:
+Aplicação disponível em:
 
 ```bash
 http://localhost:5173
 ```
-
-## Endpoints da API
-
-Listar métricas:
-
-```http
-GET /metrics
-```
-
-Criar métrica:
-
-```http
-POST /metrics
-```
-
-Exemplo de corpo da requisição:
-
-```json
-{
-  "power_kw": 4.5,
-  "panel_temperature": 42.8,
-  "solar_irradiation": 890,
-  "estimated_efficiency": 0.005056
-}
-```
-
-## Observações
-
-- O arquivo `assets/solar_analytics.sql` deve ser importado antes de executar a aplicação.
-- O backend precisa estar rodando para o frontend carregar os dados.
-- Arquivos `.env` não devem ser enviados para o GitHub.
